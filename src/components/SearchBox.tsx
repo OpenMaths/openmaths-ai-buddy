@@ -24,7 +24,7 @@ const SearchBox = ({ onSearch }: SearchBoxProps) => {
     { icon: null, label: "Compare", color: "text-blue-600" },
     { icon: null, label: "Troubleshoot", color: "text-purple-600" },
     { icon: null, label: "Learn", color: "text-green-600" },
-    { icon: null, label: "Analyze", color: "text-orange-600" },
+    { icon: null, label: "Analyze", color: "text-[hsl(var(--dark-replacement))]" },
     { icon: null, label: "Calculate", color: "text-teal-600" },
   ];
 
