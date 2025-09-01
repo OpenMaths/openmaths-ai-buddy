@@ -1,17 +1,20 @@
 import { Home, Plus, Globe, BookOpen, Settings, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
+import ChatHistory from "./ChatHistory";
 
 interface SidebarProps {
   className?: string;
 }
 
 const Sidebar = ({ className }: SidebarProps) => {
+  const [isChatHistoryOpen, setIsChatHistoryOpen] = useState(false);
   const menuItems = [
-    { icon: Home, label: "Home", isActive: true },
-    { icon: Plus, label: "New Thread" },
-    { icon: Globe, label: "Discover" },
-    { icon: BookOpen, label: "Library" },
+    { icon: Home, label: "Home", isActive: true, onClick: () => {} },
+    { icon: Plus, label: "New Thread", onClick: () => setIsChatHistoryOpen(true) },
+    { icon: Globe, label: "Discover", onClick: () => {} },
+    { icon: BookOpen, label: "Library", onClick: () => {} },
   ];
 
   return (
@@ -42,6 +45,7 @@ const Sidebar = ({ className }: SidebarProps) => {
                     : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
                 )}
                 title={item.label}
+                onClick={item.onClick}
               >
                 <Icon className="h-5 w-5" />
               </Button>
@@ -69,6 +73,11 @@ const Sidebar = ({ className }: SidebarProps) => {
           <User className="h-5 w-5" />
         </Button>
       </div>
+
+      <ChatHistory 
+        isOpen={isChatHistoryOpen} 
+        onClose={() => setIsChatHistoryOpen(false)} 
+      />
     </div>
   );
 };
