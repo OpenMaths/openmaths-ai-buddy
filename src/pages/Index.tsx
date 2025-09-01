@@ -102,7 +102,7 @@ Feel free to ask follow-up questions!`,
                     <img 
                       src="/lovable-uploads/eebb080e-8632-4260-9770-0dd2b4566b62.png" 
                       alt="OpenMaths AI Logo" 
-                      className="h-10 w-10 object-contain"
+                      className="h-12 w-12 object-contain"
                     />
                   </div>
                   <h1 className="text-4xl font-medium text-foreground mb-2">
