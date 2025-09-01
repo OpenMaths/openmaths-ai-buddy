@@ -98,6 +98,13 @@ Feel free to ask follow-up questions!`,
               /* Welcome/Search State */
               <div className="flex-1 flex flex-col items-center justify-center p-8">
                 <div className="text-center mb-12">
+                  <div className="mb-6 flex justify-center">
+                    <img 
+                      src="/lovable-uploads/e82cda38-2924-46c6-b1dc-de27f2ffc4ff.png" 
+                      alt="OpenMaths AI Logo" 
+                      className="h-16 w-16 object-contain"
+                    />
+                  </div>
                   <h1 className="text-4xl font-medium text-foreground mb-2">
                     openmaths
                   </h1>
