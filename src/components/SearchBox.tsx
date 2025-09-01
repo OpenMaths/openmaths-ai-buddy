@@ -21,11 +21,11 @@ const SearchBox = ({ onSearch }: SearchBoxProps) => {
   };
 
   const suggestionButtons = [
-    { icon: null, label: "Compare", color: "text-blue-600" },
-    { icon: null, label: "Troubleshoot", color: "text-purple-600" },
-    { icon: null, label: "Learn", color: "text-green-600" },
-    { icon: null, label: "Analyze", color: "text-[hsl(var(--dark-replacement))]" },
-    { icon: null, label: "Calculate", color: "text-teal-600" },
+    { icon: null, label: "Compare", color: "text-white/60" },
+    { icon: null, label: "Troubleshoot", color: "text-white/60" },
+    { icon: null, label: "Learn", color: "text-white/60" },
+    { icon: null, label: "Analyze", color: "text-white/60" },
+    { icon: null, label: "Calculate", color: "text-white/60" },
   ];
 
   return (
