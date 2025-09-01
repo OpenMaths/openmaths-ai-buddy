@@ -19,7 +19,7 @@ const Sidebar = ({ className }: SidebarProps) => {
       {/* Logo */}
       <div className="h-16 flex items-center justify-center border-b">
         <img 
-          src="/lovable-uploads/7116060b-c9bb-43d7-9490-a727e85f1feb.png" 
+          src="/lovable-uploads/eebb080e-8632-4260-9770-0dd2b4566b62.png" 
           alt="OpenMaths AI" 
           className="h-8 w-8 object-contain"
         />

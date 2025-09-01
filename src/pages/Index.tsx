@@ -100,9 +100,9 @@ Feel free to ask follow-up questions!`,
                 <div className="text-center mb-12">
                   <div className="mb-6 flex justify-center">
                     <img 
-                      src="/lovable-uploads/e82cda38-2924-46c6-b1dc-de27f2ffc4ff.png" 
+                      src="/lovable-uploads/eebb080e-8632-4260-9770-0dd2b4566b62.png" 
                       alt="OpenMaths AI Logo" 
-                      className="h-19 w-19 object-contain"
+                      className="h-10 w-10 object-contain"
                     />
                   </div>
                   <h1 className="text-4xl font-medium text-foreground mb-2">
@@ -135,7 +135,7 @@ Feel free to ask follow-up questions!`,
                         <div className="flex-shrink-0">
                           <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
                             <img 
-                              src="/lovable-uploads/7116060b-c9bb-43d7-9490-a727e85f1feb.png" 
+                              src="/lovable-uploads/eebb080e-8632-4260-9770-0dd2b4566b62.png" 
                               alt="AI" 
                               className="w-5 h-5 object-contain"
                             />
