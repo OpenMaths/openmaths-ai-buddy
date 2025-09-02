@@ -20,13 +20,6 @@ const SearchBox = ({ onSearch }: SearchBoxProps) => {
     }
   };
 
-  const suggestionButtons = [
-    { icon: null, label: "Compare", color: "text-white/60" },
-    { icon: null, label: "Troubleshoot", color: "text-white/60" },
-    { icon: null, label: "Learn", color: "text-white/60" },
-    { icon: null, label: "Analyze", color: "text-white/60" },
-    { icon: null, label: "Calculate", color: "text-white/60" },
-  ];
 
   return (
     <div className="w-full max-w-2xl mx-auto">
@@ -94,32 +87,6 @@ const SearchBox = ({ onSearch }: SearchBoxProps) => {
         </div>
       </form>
 
-      {/* Suggestion pills */}
-      <div className="flex flex-wrap gap-2 mt-4 justify-center">
-        {suggestionButtons.map((button, index) => (
-          <Button
-            key={index}
-            variant="outline"
-            size="sm"
-            className={cn(
-              "rounded-full border-border/50 hover:border-border",
-              button.color
-            )}
-            onClick={() => {
-              const mathPrompts = [
-                "Solve: 2x + 5 = 13",
-                "Find derivative of x² + 3x",
-                "Explain quadratic formula",
-                "Simplify: (x²-4)/(x-2)",
-                "Calculate: ∫(2x+1)dx"
-              ];
-              onSearch(mathPrompts[index]);
-            }}
-          >
-            {button.label}
-          </Button>
-        ))}
-      </div>
     </div>
   );
 };
