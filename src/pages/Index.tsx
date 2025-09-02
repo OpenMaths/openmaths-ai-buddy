@@ -90,8 +90,8 @@ Feel free to ask follow-up questions!`,
         <Sidebar />
         
         {/* Main content */}
-        <div className="flex-1 flex flex-col">          
-          <main className="flex-1 flex flex-col shadow-lg">
+        <div className="flex-1 flex flex-col py-4 px-4">          
+          <main className="flex-1 flex flex-col rounded-2xl shadow-lg bg-card">
             {messages.length === 0 ? (
               /* Welcome/Search State */
               <div className="flex-1 flex flex-col items-center justify-center p-8 relative">
