@@ -33,8 +33,8 @@ const SearchBox = ({ onSearch }: SearchBoxProps) => {
       {/* Main search box */}
       <form onSubmit={handleSubmit} className="relative">
         <div className={cn(
-          "relative rounded-2xl border bg-card transition-all duration-200",
-          isFocused ? "shadow-lg border-primary/20" : "shadow-sm hover:shadow-md"
+          "relative rounded-2xl border bg-card/50 backdrop-blur-sm transition-all duration-200",
+          isFocused ? "shadow-lg border-primary/30 bg-card/70" : "shadow-sm hover:shadow-md border-border/30"
         )}>
           <div className="flex items-center px-4 py-3">
             <Search className="h-5 w-5 text-muted-foreground mr-3" />
@@ -43,7 +43,7 @@ const SearchBox = ({ onSearch }: SearchBoxProps) => {
               onChange={(e) => setQuery(e.target.value)}
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
-              placeholder="Ask anything..."
+              placeholder="Ask anything or @mention a Space"
               className="flex-1 border-0 bg-transparent text-base placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0"
             />
             
@@ -84,7 +84,7 @@ const SearchBox = ({ onSearch }: SearchBoxProps) => {
               <Button
                 type="submit"
                 disabled={!query.trim()}
-                className="h-8 w-8 rounded-full bg-primary hover:bg-primary/90 disabled:bg-muted disabled:text-muted-foreground"
+                className="h-8 w-8 rounded-full bg-primary hover:bg-primary/90 disabled:bg-muted disabled:text-muted-foreground transition-all"
                 size="icon"
               >
                 <ArrowUp className="h-4 w-4" />
