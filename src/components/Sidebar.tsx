@@ -18,9 +18,9 @@ const Sidebar = ({ className }: SidebarProps) => {
   ];
 
   return (
-    <div className={cn("w-16 border-r bg-card flex flex-col", className)}>
+    <div className={cn("w-16 flex flex-col", className)} style={{ backgroundColor: '#1E1E1E' }}>
       {/* Logo */}
-      <div className="h-16 flex items-center justify-center border-b">
+      <div className="h-16 flex items-center justify-center">
         <img 
           src="/lovable-uploads/eebb080e-8632-4260-9770-0dd2b4566b62.png" 
           alt="OpenMaths AI" 
@@ -55,7 +55,7 @@ const Sidebar = ({ className }: SidebarProps) => {
       </nav>
 
       {/* Bottom actions */}
-      <div className="p-2 border-t space-y-1">
+      <div className="p-2 space-y-1">
         <Button
           variant="ghost"
           size="icon"
