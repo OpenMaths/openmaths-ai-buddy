@@ -105,11 +105,20 @@ Feel free to ask follow-up questions!`,
                   </Button>
                 </div>
 
-                <div className="text-center mb-16">
-                  <h1 className="text-5xl font-light text-foreground mb-2">
+                <div className="text-center mb-12">
+                  <div className="mb-6 flex justify-center">
+                    <img 
+                      src="/lovable-uploads/eebb080e-8632-4260-9770-0dd2b4566b62.png" 
+                      alt="OpenMaths AI Logo" 
+                      className="h-12 w-12 object-contain"
+                    />
+                  </div>
+                  <h1 className="text-4xl font-medium text-foreground mb-2">
                     openmaths
-                    <span className="text-primary font-normal ml-2">pro</span>
                   </h1>
+                  <p className="text-muted-foreground">
+                    Your friendly AI math tutor
+                  </p>
                 </div>
                 
                 <SearchBox onSearch={handleSearch} />
