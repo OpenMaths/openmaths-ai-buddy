@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { ThemeProvider } from "next-themes";
 import Sidebar from "@/components/Sidebar";
-import TopHeader from "@/components/TopHeader";
 import SearchBox from "@/components/SearchBox";
 import ChatMessage from "@/components/ChatMessage";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 interface Message {
@@ -90,13 +90,21 @@ Feel free to ask follow-up questions!`,
         <Sidebar />
         
         {/* Main content */}
-        <div className="flex-1 flex flex-col">
-          <TopHeader />
-          
-          <main className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col">          
+          <main className="flex-1 flex flex-col shadow-lg">
             {messages.length === 0 ? (
               /* Welcome/Search State */
-              <div className="flex-1 flex flex-col items-center justify-center p-8">
+              <div className="flex-1 flex flex-col items-center justify-center p-8 relative">
+                {/* Sign in buttons at top */}
+                <div className="absolute top-6 right-6 flex items-center gap-2">
+                  <Button variant="ghost" size="sm" className="text-sm text-muted-foreground">
+                    Sign in or create an account
+                  </Button>
+                  <Button variant="ghost" size="sm" className="text-xs text-muted-foreground">
+                    Unlock Pro Search and History
+                  </Button>
+                </div>
+
                 <div className="text-center mb-12">
                   <div className="mb-6 flex justify-center">
                     <img 
@@ -117,7 +125,17 @@ Feel free to ask follow-up questions!`,
               </div>
             ) : (
               /* Chat State */
-              <div className="flex-1 flex flex-col">
+              <div className="flex-1 flex flex-col relative">
+                {/* Sign in buttons at top */}
+                <div className="absolute top-6 right-6 flex items-center gap-2 z-10">
+                  <Button variant="ghost" size="sm" className="text-sm text-muted-foreground">
+                    Sign in or create an account
+                  </Button>
+                  <Button variant="ghost" size="sm" className="text-xs text-muted-foreground">
+                    Unlock Pro Search and History
+                  </Button>
+                </div>
+
                 {/* Messages */}
                 <div className="flex-1 overflow-y-auto">
                   <div className="max-w-4xl mx-auto py-8 px-6 space-y-8">
@@ -141,7 +159,7 @@ Feel free to ask follow-up questions!`,
                             />
                           </div>
                         </div>
-                        <div className="bg-card p-4 rounded-lg shadow-clean">
+                        <div className="bg-card p-4 rounded-lg">
                           <div className="flex gap-1">
                             <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                             <div className="w-2 h-2 bg-primary rounded-full animate-pulse [animation-delay:0.2s]"></div>
@@ -154,7 +172,7 @@ Feel free to ask follow-up questions!`,
                 </div>
                 
                 {/* Search box at bottom */}
-                <div className="border-t bg-background p-6">
+                <div className="bg-background p-6">
                   <div className="max-w-4xl mx-auto">
                     <SearchBox onSearch={handleSearch} />
                   </div>
