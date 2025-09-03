@@ -10,11 +10,52 @@ interface SidebarProps {
 
 const Sidebar = ({ className }: SidebarProps) => {
   const [isChatHistoryOpen, setIsChatHistoryOpen] = useState(false);
+  const [activeItem, setActiveItem] = useState("Home");
+  const [activeBottomItem, setActiveBottomItem] = useState("");
+  
   const menuItems = [
-    { icon: Home, label: "Home", isActive: true, onClick: () => {} },
-    { icon: Plus, label: "New Thread", onClick: () => setIsChatHistoryOpen(true) },
-    { icon: Globe, label: "Discover", onClick: () => {} },
-    { icon: BookOpen, label: "Library", onClick: () => {} },
+    { 
+      icon: Home, 
+      label: "Home", 
+      id: "Home",
+      onClick: () => setActiveItem("Home") 
+    },
+    { 
+      icon: Plus, 
+      label: "New Thread", 
+      id: "New Thread",
+      onClick: () => {
+        setActiveItem("New Thread");
+        setIsChatHistoryOpen(true);
+      } 
+    },
+    { 
+      icon: Globe, 
+      label: "Discover", 
+      id: "Discover",
+      onClick: () => setActiveItem("Discover") 
+    },
+    { 
+      icon: BookOpen, 
+      label: "Library", 
+      id: "Library",
+      onClick: () => setActiveItem("Library") 
+    },
+  ];
+
+  const bottomItems = [
+    {
+      icon: Settings,
+      label: "Settings",
+      id: "Settings",
+      onClick: () => setActiveBottomItem(activeBottomItem === "Settings" ? "" : "Settings")
+    },
+    {
+      icon: User,
+      label: "Profile", 
+      id: "Profile",
+      onClick: () => setActiveBottomItem(activeBottomItem === "Profile" ? "" : "Profile")
+    }
   ];
 
   return (
@@ -40,14 +81,14 @@ const Sidebar = ({ className }: SidebarProps) => {
                 size="icon"
                 className={cn(
                   "w-12 h-12 rounded-xl transition-colors",
-                  item.isActive 
-                    ? "bg-primary/10 text-primary hover:bg-primary/20" 
+                  activeItem === item.id
+                    ? "bg-primary/10 text-white hover:bg-primary/20" 
                     : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
                 )}
                 title={item.label}
                 onClick={item.onClick}
               >
-                <Icon className="h-5 w-5" />
+                <Icon className="h-7 w-7" />
               </Button>
             );
           })}
@@ -56,22 +97,26 @@ const Sidebar = ({ className }: SidebarProps) => {
 
       {/* Bottom actions */}
       <div className="p-2 space-y-1">
-        <Button
-          variant="ghost"
-          size="icon"
-          className="w-12 h-12 rounded-xl text-muted-foreground hover:text-foreground hover:bg-secondary/50"
-          title="Settings"
-        >
-          <Settings className="h-7 w-7" />
-        </Button>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="w-12 h-12 rounded-xl text-muted-foreground hover:text-foreground hover:bg-secondary/50"
-          title="Profile"
-        >
-          <User className="h-7 w-7" />
-        </Button>
+        {bottomItems.map((item, index) => {
+          const Icon = item.icon;
+          return (
+            <Button
+              key={index}
+              variant="ghost"
+              size="icon"
+              className={cn(
+                "w-12 h-12 rounded-xl transition-colors",
+                activeBottomItem === item.id
+                  ? "bg-primary/10 text-white hover:bg-primary/20"
+                  : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+              )}
+              title={item.label}
+              onClick={item.onClick}
+            >
+              <Icon className="h-7 w-7" />
+            </Button>
+          );
+        })}
       </div>
 
       <ChatHistory 
