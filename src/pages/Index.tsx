@@ -105,7 +105,7 @@ Feel free to ask follow-up questions!`,
                   </Button>
                 </div>
 
-                <div className="text-center mb-12">
+                <div className="text-center mb-6">
                   <div className="mb-6 flex justify-center">
                     <img 
                       src="/lovable-uploads/73b9e6a2-78c4-4dba-b0c9-1f6148c296be.png" 
