@@ -18,18 +18,18 @@ const Sidebar = ({ className }: SidebarProps) => {
   ];
 
   return (
-    <div className={cn("w-16 flex flex-col", className)} style={{ backgroundColor: '#1E1E1E' }}>
+    <div className={cn("w-16 flex flex-col shadow-lg", className)} style={{ backgroundColor: '#1E1E1E' }}>
       {/* Logo */}
       <div className="h-16 flex items-center justify-center">
         <img 
-          src="/lovable-uploads/eebb080e-8632-4260-9770-0dd2b4566b62.png" 
-          alt="OpenMaths AI" 
+          src="/lovable-uploads/adfa9ea6-324a-4d1d-8ac1-45f836505465.png" 
+          alt="AI Logo" 
           className="h-8 w-8 object-contain"
         />
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 py-4">
+      <nav className="flex-1 py-2">
         <div className="space-y-1 px-2">
           {menuItems.map((item, index) => {
             const Icon = item.icon;
