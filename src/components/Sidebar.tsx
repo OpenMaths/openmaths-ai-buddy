@@ -62,7 +62,7 @@ const Sidebar = ({ className }: SidebarProps) => {
           className="w-12 h-12 rounded-xl text-muted-foreground hover:text-foreground hover:bg-secondary/50"
           title="Settings"
         >
-          <Settings className="h-5 w-5" />
+          <Settings className="h-7 w-7" />
         </Button>
         <Button
           variant="ghost"
@@ -70,7 +70,7 @@ const Sidebar = ({ className }: SidebarProps) => {
           className="w-12 h-12 rounded-xl text-muted-foreground hover:text-foreground hover:bg-secondary/50"
           title="Profile"
         >
-          <User className="h-5 w-5" />
+          <User className="h-7 w-7" />
         </Button>
       </div>
 
