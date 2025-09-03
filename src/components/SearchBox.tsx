@@ -26,8 +26,8 @@ const SearchBox = ({ onSearch }: SearchBoxProps) => {
       {/* Main search box */}
       <form onSubmit={handleSubmit} className="relative">
         <div className={cn(
-          "relative rounded-2xl border bg-card transition-all duration-200",
-          isFocused ? "shadow-lg border-primary/20" : "shadow-sm hover:shadow-md"
+          "relative rounded-2xl border bg-card transition-all duration-200 shadow-md",
+          isFocused ? "shadow-xl border-primary/20 translate-y-[-2px]" : "shadow-lg hover:shadow-xl hover:translate-y-[-1px]"
         )}>
           <div className="flex items-center px-4 py-3">
             <Search className="h-5 w-5 text-muted-foreground mr-3" />
