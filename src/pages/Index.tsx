@@ -90,8 +90,8 @@ Feel free to ask follow-up questions!`,
         <Sidebar />
         
         {/* Main content */}
-        <div className="flex-1 flex flex-col py-4 px-4">          
-          <main className="flex-1 flex flex-col rounded-2xl shadow-lg bg-card">
+        <div className="flex-1 flex flex-col py-6 px-4">          
+          <main className="flex-1 flex flex-col rounded-2xl shadow-xl bg-card transform translate-y-[-4px]">
             {messages.length === 0 ? (
               /* Welcome/Search State */
               <div className="flex-1 flex flex-col items-center justify-center p-8 relative">
@@ -110,7 +110,7 @@ Feel free to ask follow-up questions!`,
                     <img 
                       src="/lovable-uploads/73b9e6a2-78c4-4dba-b0c9-1f6148c296be.png" 
                       alt="AI Math Tutor Logo" 
-                      className="h-16 w-auto object-contain"
+                      className="h-24 w-auto object-contain"
                     />
                   </div>
                 </div>
