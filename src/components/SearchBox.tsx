@@ -22,7 +22,7 @@ const SearchBox = ({
       {/* Main search box */}
       <form onSubmit={handleSubmit} className="relative">
         <div className={cn("relative rounded-2xl border bg-card transition-all duration-200 shadow-md", isFocused ? "shadow-xl border-primary/20 translate-y-[-2px]" : "shadow-lg hover:shadow-xl hover:translate-y-[-1px]")}>
-          <div className="flex items-center px-4 py-[16px]">
+          <div className="flex items-center px-[17px] py-[17px]">
             <Search className="h-5 w-5 text-muted-foreground mr-3" />
             <Input value={query} onChange={e => setQuery(e.target.value)} onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)} placeholder="Ask anything..." className="flex-1 border-0 bg-transparent text-base placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0" />
             
