@@ -160,7 +160,7 @@ Feel free to ask follow-up questions!`,
             <div className="flex-1 py-0">
               <main className="flex-1 flex flex-col rounded-2xl shadow-xl bg-card transform translate-y-[-4px] my-0 py-0">
                 {messages.length === 0 ? (/* Welcome/Search State */
-              <div className="flex-1 flex flex-col items-center justify-center p-8 relative px-0 mx-0 my-0 py-[348px] bg-neutral-900 rounded-xl">
+              <div className="flex-1 flex flex-col items-center justify-center p-8 relative px-0 mx-0 my-0 py-[348px] bg-neutral-900 rounded">
                     {/* Sign in buttons at top */}
                     <div className="absolute top-6 right-6 flex items-center gap-2">
                       <Button variant="ghost" size="sm" className="text-sm text-muted-foreground">
