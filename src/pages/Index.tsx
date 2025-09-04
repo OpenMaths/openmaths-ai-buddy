@@ -119,20 +119,20 @@ Feel free to ask follow-up questions!`,
   return <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
       <div className="h-screen flex bg-background">        
         {/* Main content */}
-        <div className="flex-1 flex flex-col py-6 px-4">
+        <div className="flex-1 flex flex-col py-6 px-4 bg-neutral-800">
           {/* Sidebar elements included in this div */}
-          <div className="flex gap-4">
+          <div className="flex gap-4 bg-neutral-800">
             {/* Sidebar */}
-            <div className="w-16 flex flex-col" style={{
+            <div style={{
             backgroundColor: '#1E1E1E'
-          }}>
+          }} className="w-16 flex flex-col mx-0 my-0 px-0 py-0">
               {/* Logo */}
-              <div className="h-16 flex items-center justify-center">
+              <div className="h-16 flex items-center justify-center bg-neutral-800">
                 <img src="/lovable-uploads/55babc2c-ec94-466f-bfa8-7eb9a1fb3ed6.png" alt="AI Math Tutor Logo" className="h-8 w-8 object-contain" />
               </div>
 
               {/* Navigation */}
-              <nav className="flex-1 py-4">
+              <nav className="flex-1 py-4 bg-neutral-800">
                 <div className="space-y-1 px-2">
                   {menuItems.map((item, index) => {
                   const Icon = item.icon;
@@ -144,7 +144,7 @@ Feel free to ask follow-up questions!`,
               </nav>
 
               {/* Bottom actions */}
-              <div className="p-2 space-y-1">
+              <div className="p-2 space-y-1 bg-neutral-800">
                 {bottomItems.map((item, index) => {
                 const Icon = item.icon;
                 return <Button key={index} variant="ghost" size="icon" className={cn("w-12 h-12 rounded-xl transition-colors", activeBottomItem === item.id ? "bg-primary/10 text-white hover:bg-primary/20" : "text-muted-foreground hover:text-foreground hover:bg-secondary/50")} title={item.label} onClick={item.onClick}>
@@ -160,7 +160,7 @@ Feel free to ask follow-up questions!`,
             <div className="flex-1 py-0">
               <main className="flex-1 flex flex-col rounded-2xl shadow-xl bg-card transform translate-y-[-4px] my-0 py-0">
                 {messages.length === 0 ? (/* Welcome/Search State */
-              <div className="flex-1 flex flex-col items-center justify-center p-8 relative px-0 mx-0 my-0 py-[348px]">
+              <div className="flex-1 flex flex-col items-center justify-center p-8 relative px-0 mx-0 my-0 py-[348px] bg-neutral-900 rounded-xl">
                     {/* Sign in buttons at top */}
                     <div className="absolute top-6 right-6 flex items-center gap-2">
                       <Button variant="ghost" size="sm" className="text-sm text-muted-foreground">
