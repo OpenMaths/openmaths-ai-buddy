@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Enhanced Dark theme */
+    /* Dark theme based on #1E1E1E */
     --background: 0 0% 12%;
     --foreground: 0 0% 95%;
 
@@ -18,9 +18,9 @@ All colors MUST be HSL.
     --popover: 0 0% 15%;
     --popover-foreground: 0 0% 95%;
 
-    /* Enhanced primary with blue accent */
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 98%;
+    /* Accent color for highlights */
+    --primary: 0 0% 25%;
+    --primary-foreground: 0 0% 95%;
 
     /* Muted backgrounds */
     --secondary: 0 0% 18%;
@@ -29,26 +29,21 @@ All colors MUST be HSL.
     --muted: 0 0% 16%;
     --muted-foreground: 0 0% 65%;
 
-    --accent: 217 91% 65%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 0 0% 20%;
+    --accent-foreground: 0 0% 95%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 0 0% 25%;
     --input: 0 0% 15%;
-    --ring: 217 91% 60%;
+    --ring: 0 0% 35%;
 
     --radius: 0.75rem;
 
-    /* Enhanced shadows with elevation */
+    /* Dark shadows */
     --shadow-clean: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.2);
-    --shadow-elevation: 0 10px 25px -3px rgb(0 0 0 / 0.3), 0 4px 6px -2px rgb(0 0 0 / 0.2);
-    --shadow-focus: 0 0 0 3px hsl(217 91% 60% / 0.3);
-
-    /* Enhanced chat shadows */
-    --shadow-chat: 0 2px 8px rgb(0 0 0 / 0.15), 0 1px 4px rgb(0 0 0 / 0.1);
-    --shadow-message: 0 1px 3px rgb(0 0 0 / 0.12), 0 1px 2px rgb(0 0 0 / 0.08);
+    --shadow-focus: 0 0 0 3px rgb(255 255 255 / 0.1);
 
     --sidebar-background: 0 0% 10%;
     --sidebar-foreground: 0 0% 90%;
@@ -61,11 +56,6 @@ All colors MUST be HSL.
     
     /* Dark replacement token */
     --dark-replacement: 0 0% 12%;
-    
-    /* Animation durations */
-    --transition-fast: 150ms;
-    --transition-normal: 200ms;
-    --transition-slow: 300ms;
   }
 
   .dark {
