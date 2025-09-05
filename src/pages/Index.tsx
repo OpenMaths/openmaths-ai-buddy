@@ -184,51 +184,51 @@ Feel free to ask follow-up questions!`,
         </div>
 
         {/* Chat section - elevated over main div */}
-        <div className="ml-20 h-full p-2 pr-2 pt-2 pb-2">
-          <div className="h-full bg-card rounded-2xl shadow-2xl flex flex-col relative">
+        <div className="ml-16 lg:ml-20 h-full p-2 pr-2 pt-2 pb-2">
+          <div className="h-full bg-card rounded-2xl shadow-elevation border border-border/30 flex flex-col relative transition-all duration-slow">
             {messages.length === 0 ? (
               /* Welcome/Search State */
-              <div className="flex-1 flex flex-col items-center justify-center relative">
-                {/* Sign in buttons at top */}
-                <div className="absolute top-6 right-6 flex items-center gap-2">
-                  <Button variant="ghost" size="sm" className="text-sm text-muted-foreground">
+              <div className="flex-1 flex flex-col items-center justify-center relative animate-fade-in-up">
+                {/* Sign in buttons at top - enhanced responsiveness */}
+                <div className="absolute top-4 right-4 lg:top-6 lg:right-6 flex items-center gap-2">
+                  <Button variant="ghost" size="sm" className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors duration-fast">
                     Sign in or create an account
                   </Button>
-                  <Button variant="ghost" size="sm" className="text-xs text-muted-foreground">
+                  <Button variant="ghost" size="sm" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-fast hidden sm:block">
                     Unlock Pro Search and History
                   </Button>
                 </div>
 
-                {/* Logo image above input */}
-                <div className="mb-2 flex justify-center">
+                {/* Logo image above input - enhanced */}
+                <div className="mb-4 flex justify-center">
                   <img 
                     src="/lovable-uploads/73b9e6a2-78c4-4dba-b0c9-1f6148c296be.png" 
                     alt="AI Math Tutor Logo" 
-                    className="h-24 w-auto object-contain" 
+                    className="h-20 sm:h-24 lg:h-28 w-auto object-contain transition-transform duration-slow hover:scale-105" 
                   />
                 </div>
                 
-                {/* Input positioned in center */}
-                <div className="w-full max-w-2xl px-8">
+                {/* Input positioned in center - responsive */}
+                <div className="w-full max-w-2xl lg:max-w-3xl px-4 sm:px-8">
                   <SearchBox onSearch={handleSearch} />
                 </div>
               </div>
             ) : (
               /* Chat State */
-              <div className="h-full flex flex-col">
-                {/* Sign in buttons at top */}
-                <div className="absolute top-6 right-6 flex items-center gap-2 z-10">
-                  <Button variant="ghost" size="sm" className="text-sm text-muted-foreground">
+              <div className="h-full flex flex-col animate-fade-in-up">
+                {/* Sign in buttons at top - enhanced */}
+                <div className="absolute top-4 right-4 lg:top-6 lg:right-6 flex items-center gap-2 z-10">
+                  <Button variant="ghost" size="sm" className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors duration-fast">
                     Sign in or create an account
                   </Button>
-                  <Button variant="ghost" size="sm" className="text-xs text-muted-foreground">
+                  <Button variant="ghost" size="sm" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-fast hidden sm:block">
                     Unlock Pro Search and History
                   </Button>
                 </div>
 
-                {/* Messages - scrollable within chat section */}
-                <div className="flex-1 overflow-y-auto pt-16 pb-4">
-                  <div className="max-w-3xl mx-auto px-6 space-y-6">
+                {/* Messages - enhanced scrolling */}
+                <div className="flex-1 overflow-y-auto pt-12 sm:pt-16 pb-4 scroll-smooth">
+                  <div className="max-w-2xl lg:max-w-3xl mx-auto px-4 sm:px-6 space-y-4 sm:space-y-6">
                     {messages.map(message => (
                       <ChatMessage 
                         key={message.id} 
@@ -239,21 +239,21 @@ Feel free to ask follow-up questions!`,
                     ))}
                     
                     {isLoading && (
-                      <div className="flex gap-4 justify-start">
+                      <div className="flex gap-3 sm:gap-4 justify-start animate-fade-in-up">
                         <div className="flex-shrink-0">
-                          <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-primary/10 flex items-center justify-center ring-1 ring-primary/20">
                             <img 
                               src="/lovable-uploads/eebb080e-8632-4260-9770-0dd2b4566b62.png" 
                               alt="AI" 
-                              className="w-5 h-5 object-contain" 
+                              className="w-5 h-5 sm:w-6 sm:h-6 object-contain" 
                             />
                           </div>
                         </div>
-                        <div className="bg-card p-4 rounded-lg shadow-sm">
+                        <div className="bg-card p-3 sm:p-4 rounded-2xl shadow-message border border-border/50">
                           <div className="flex gap-1">
-                            <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                            <div className="w-2 h-2 bg-primary rounded-full animate-pulse [animation-delay:0.2s]"></div>
-                            <div className="w-2 h-2 bg-primary rounded-full animate-pulse [animation-delay:0.4s]"></div>
+                            <div className="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
+                            <div className="w-2 h-2 bg-primary rounded-full animate-bounce [animation-delay:0.1s]"></div>
+                            <div className="w-2 h-2 bg-primary rounded-full animate-bounce [animation-delay:0.2s]"></div>
                           </div>
                         </div>
                       </div>
@@ -261,18 +261,18 @@ Feel free to ask follow-up questions!`,
                   </div>
                 </div>
                 
-                {/* Logo image above input tab */}
-                <div className="flex justify-center mb-1">
+                {/* Logo image above input tab - enhanced */}
+                <div className="flex justify-center mb-1 sm:mb-2">
                   <img 
                     src="/lovable-uploads/73b9e6a2-78c4-4dba-b0c9-1f6148c296be.png" 
                     alt="AI Math Tutor Logo" 
-                    className="h-8 w-auto object-contain opacity-60" 
+                    className="h-6 sm:h-8 w-auto object-contain opacity-60 transition-opacity duration-fast hover:opacity-80" 
                   />
                 </div>
                 
-                {/* Search box at bottom - matches chat width */}
-                <div className="px-6 pb-6">
-                  <div className="max-w-3xl mx-auto">
+                {/* Search box at bottom - enhanced responsiveness */}
+                <div className="px-4 sm:px-6 pb-4 sm:pb-6">
+                  <div className="max-w-2xl lg:max-w-3xl mx-auto">
                     <SearchBox onSearch={handleSearch} />
                   </div>
                 </div>
