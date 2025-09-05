@@ -117,110 +117,167 @@ Feel free to ask follow-up questions!`,
     }, 2000);
   };
   return <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-      <div className="h-screen flex bg-background">        
-        {/* Main content */}
-        <div className="flex-1 flex flex-col py-6 px-4 bg-neutral-800">
-          {/* Sidebar elements included in this div */}
-          <div className="flex gap-4 bg-neutral-800">
-            {/* Sidebar */}
-            <div style={{
-            backgroundColor: '#1E1E1E'
-          }} className="w-16 flex flex-col mx-0 my-0 px-0 py-0">
-              {/* Logo */}
-              <div className="h-16 flex items-center justify-center bg-neutral-800">
-                <img src="/lovable-uploads/55babc2c-ec94-466f-bfa8-7eb9a1fb3ed6.png" alt="AI Math Tutor Logo" className="h-8 w-8 object-contain" />
-              </div>
+      {/* Main background div */}
+      <div className="h-screen bg-neutral-800 relative">
+        {/* Sidebar - positioned within main div */}
+        <div className="fixed left-0 top-0 h-full w-20 bg-neutral-900 flex flex-col z-10">
+          {/* Logo */}
+          <div className="h-20 flex items-center justify-center">
+            <img 
+              src="/lovable-uploads/55babc2c-ec94-466f-bfa8-7eb9a1fb3ed6.png" 
+              alt="AI Math Tutor Logo" 
+              className="h-12 w-12 object-contain"
+            />
+          </div>
 
-              {/* Navigation */}
-              <nav className="flex-1 py-4 bg-neutral-800">
-                <div className="space-y-1 px-2">
-                  {menuItems.map((item, index) => {
-                  const Icon = item.icon;
-                  return <Button key={index} variant="ghost" size="icon" className={cn("w-12 h-12 rounded-xl transition-colors", activeItem === item.id ? "bg-primary/10 text-white hover:bg-primary/20" : "text-muted-foreground hover:text-foreground hover:bg-secondary/50")} title={item.label} onClick={item.onClick}>
-                        <Icon className="h-7 w-7" />
-                      </Button>;
-                })}
-                </div>
-              </nav>
-
-              {/* Bottom actions */}
-              <div className="p-2 space-y-1 bg-neutral-800">
-                {bottomItems.map((item, index) => {
+          {/* Navigation */}
+          <nav className="flex-1 py-4">
+            <div className="space-y-2 px-3">
+              {menuItems.map((item, index) => {
                 const Icon = item.icon;
-                return <Button key={index} variant="ghost" size="icon" className={cn("w-12 h-12 rounded-xl transition-colors", activeBottomItem === item.id ? "bg-primary/10 text-white hover:bg-primary/20" : "text-muted-foreground hover:text-foreground hover:bg-secondary/50")} title={item.label} onClick={item.onClick}>
-                      <Icon className="h-7 w-7" />
-                    </Button>;
+                return (
+                  <Button
+                    key={index}
+                    variant="ghost"
+                    size="icon"
+                    className={cn(
+                      "w-14 h-14 rounded-xl transition-colors",
+                      activeItem === item.id
+                        ? "bg-primary/10 text-white hover:bg-primary/20" 
+                        : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                    )}
+                    title={item.label}
+                    onClick={item.onClick}
+                  >
+                    <Icon className="h-8 w-8" />
+                  </Button>
+                );
               })}
+            </div>
+          </nav>
+
+          {/* Bottom actions */}
+          <div className="p-3 space-y-2">
+            {bottomItems.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <Button
+                  key={index}
+                  variant="ghost"
+                  size="icon"
+                  className={cn(
+                    "w-14 h-14 rounded-xl transition-colors",
+                    activeBottomItem === item.id
+                      ? "bg-primary/10 text-white hover:bg-primary/20"
+                      : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                  )}
+                  title={item.label}
+                  onClick={item.onClick}
+                >
+                  <Icon className="h-8 w-8" />
+                </Button>
+              );
+            })}
+          </div>
+
+          <ChatHistory isOpen={isChatHistoryOpen} onClose={() => setIsChatHistoryOpen(false)} />
+        </div>
+
+        {/* Chat section - elevated over main div */}
+        <div className="ml-20 h-full p-2 pr-2 pt-2 pb-2">
+          <div className="h-full bg-card rounded-2xl shadow-2xl flex flex-col relative">
+            {messages.length === 0 ? (
+              /* Welcome/Search State */
+              <div className="flex-1 flex flex-col items-center justify-center relative">
+                {/* Sign in buttons at top */}
+                <div className="absolute top-6 right-6 flex items-center gap-2">
+                  <Button variant="ghost" size="sm" className="text-sm text-muted-foreground">
+                    Sign in or create an account
+                  </Button>
+                  <Button variant="ghost" size="sm" className="text-xs text-muted-foreground">
+                    Unlock Pro Search and History
+                  </Button>
+                </div>
+
+                {/* Logo image above input */}
+                <div className="mb-2 flex justify-center">
+                  <img 
+                    src="/lovable-uploads/73b9e6a2-78c4-4dba-b0c9-1f6148c296be.png" 
+                    alt="AI Math Tutor Logo" 
+                    className="h-24 w-auto object-contain" 
+                  />
+                </div>
+                
+                {/* Input positioned in center */}
+                <div className="w-full max-w-2xl px-8">
+                  <SearchBox onSearch={handleSearch} />
+                </div>
               </div>
+            ) : (
+              /* Chat State */
+              <div className="h-full flex flex-col">
+                {/* Sign in buttons at top */}
+                <div className="absolute top-6 right-6 flex items-center gap-2 z-10">
+                  <Button variant="ghost" size="sm" className="text-sm text-muted-foreground">
+                    Sign in or create an account
+                  </Button>
+                  <Button variant="ghost" size="sm" className="text-xs text-muted-foreground">
+                    Unlock Pro Search and History
+                  </Button>
+                </div>
 
-              <ChatHistory isOpen={isChatHistoryOpen} onClose={() => setIsChatHistoryOpen(false)} />
-            </div>
-
-            {/* Main content area */}
-            <div className="flex-1 py-0">
-              <main className="flex-1 flex flex-col rounded-2xl shadow-xl bg-card transform translate-y-[-4px] my-0 py-0">
-                {messages.length === 0 ? (/* Welcome/Search State */
-              <div className="flex-1 flex flex-col items-center justify-center p-8 relative px-0 mx-0 my-0 py-[348px] bg-neutral-900 rounded">
-                    {/* Sign in buttons at top */}
-                    <div className="absolute top-6 right-6 flex items-center gap-2">
-                      <Button variant="ghost" size="sm" className="text-sm text-muted-foreground">
-                        Sign in or create an account
-                      </Button>
-                      <Button variant="ghost" size="sm" className="text-xs text-muted-foreground">
-                        Unlock Pro Search and History
-                      </Button>
-                    </div>
-
-                    <div className="text-center mb-6 mx-0 py-0">
-                      <div className="mb-6 flex justify-center">
-                        <img src="/lovable-uploads/73b9e6a2-78c4-4dba-b0c9-1f6148c296be.png" alt="AI Math Tutor Logo" className="h-24 w-auto object-contain" />
-                      </div>
-                    </div>
+                {/* Messages - scrollable within chat section */}
+                <div className="flex-1 overflow-y-auto pt-16 pb-4">
+                  <div className="max-w-3xl mx-auto px-6 space-y-6">
+                    {messages.map(message => (
+                      <ChatMessage 
+                        key={message.id} 
+                        message={message.content} 
+                        isUser={message.isUser} 
+                        timestamp={message.timestamp} 
+                      />
+                    ))}
                     
+                    {isLoading && (
+                      <div className="flex gap-4 justify-start">
+                        <div className="flex-shrink-0">
+                          <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                            <img 
+                              src="/lovable-uploads/eebb080e-8632-4260-9770-0dd2b4566b62.png" 
+                              alt="AI" 
+                              className="w-5 h-5 object-contain" 
+                            />
+                          </div>
+                        </div>
+                        <div className="bg-card p-4 rounded-lg shadow-sm">
+                          <div className="flex gap-1">
+                            <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                            <div className="w-2 h-2 bg-primary rounded-full animate-pulse [animation-delay:0.2s]"></div>
+                            <div className="w-2 h-2 bg-primary rounded-full animate-pulse [animation-delay:0.4s]"></div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                
+                {/* Logo image above input tab */}
+                <div className="flex justify-center mb-1">
+                  <img 
+                    src="/lovable-uploads/73b9e6a2-78c4-4dba-b0c9-1f6148c296be.png" 
+                    alt="AI Math Tutor Logo" 
+                    className="h-8 w-auto object-contain opacity-60" 
+                  />
+                </div>
+                
+                {/* Search box at bottom - matches chat width */}
+                <div className="px-6 pb-6">
+                  <div className="max-w-3xl mx-auto">
                     <SearchBox onSearch={handleSearch} />
-                  </div>) : (/* Chat State */
-              <div className="flex-1 flex flex-col relative">
-                    {/* Sign in buttons at top */}
-                    <div className="absolute top-6 right-6 flex items-center gap-2 z-10">
-                      <Button variant="ghost" size="sm" className="text-sm text-muted-foreground">
-                        Sign in or create an account
-                      </Button>
-                      <Button variant="ghost" size="sm" className="text-xs text-muted-foreground">
-                        Unlock Pro Search and History
-                      </Button>
-                    </div>
-
-                    {/* Messages */}
-                    <div className="flex-1 overflow-y-auto">
-                      <div className="max-w-4xl mx-auto py-8 px-6 space-y-8">
-                        {messages.map(message => <ChatMessage key={message.id} message={message.content} isUser={message.isUser} timestamp={message.timestamp} />)}
-                        
-                        {isLoading && <div className="flex gap-4 justify-start">
-                            <div className="flex-shrink-0">
-                              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                                <img src="/lovable-uploads/eebb080e-8632-4260-9770-0dd2b4566b62.png" alt="AI" className="w-5 h-5 object-contain" />
-                              </div>
-                            </div>
-                            <div className="bg-card p-4 rounded-lg">
-                              <div className="flex gap-1">
-                                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                                <div className="w-2 h-2 bg-primary rounded-full animate-pulse [animation-delay:0.2s]"></div>
-                                <div className="w-2 h-2 bg-primary rounded-full animate-pulse [animation-delay:0.4s]"></div>
-                              </div>
-                            </div>
-                          </div>}
-                      </div>
-                    </div>
-                    
-                    {/* Search box at bottom */}
-                    <div className="bg-background p-6">
-                      <div className="max-w-4xl mx-auto">
-                        <SearchBox onSearch={handleSearch} />
-                      </div>
-                    </div>
-                  </div>)}
-              </main>
-            </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
