@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ThemeProvider } from "next-themes";
-import { Home, Plus, Globe, BookOpen, Settings, User } from "lucide-react";
+import { Home, Plus, Globe, BookOpen, Settings, User, Menu } from "lucide-react";
 import SearchBox from "@/components/SearchBox";
 import ChatMessage from "@/components/ChatMessage";
 import ChatHistory from "@/components/ChatHistory";
@@ -120,9 +120,6 @@ Feel free to ask follow-up questions!`,
     }, 2000);
   };
   return <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-      {/* Mobile Header */}
-      <MobileHeader onMenuToggle={() => setIsMobileNavOpen(true)} />
-      
       {/* Mobile Navigation Overlay */}
       <MobileNavOverlay
         isOpen={isMobileNavOpen}
@@ -171,7 +168,17 @@ Feel free to ask follow-up questions!`,
         </div>
 
         {/* Chat section - responsive margins and padding */}
-        <div className="ml-0 md:ml-20 h-full p-0 md:p-2 pt-16 md:pt-2 bg-neutral-900">
+        <div className="ml-0 md:ml-20 h-full p-0 md:p-2 bg-neutral-900">
+          {/* Floating hamburger menu for mobile */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsMobileNavOpen(true)}
+            className="block md:hidden fixed top-4 left-4 z-30 h-10 w-10 bg-background/80 backdrop-blur-sm"
+          >
+            <Menu className="h-6 w-6" />
+          </Button>
+          
           <div className="h-full bg-card md:rounded-2xl md:shadow-2xl flex flex-col relative">
             {messages.length === 0 ? (/* Welcome/Search State */
           <div className="flex-1 flex flex-col items-center justify-center relative px-4">
