@@ -4,6 +4,8 @@ import { Home, Plus, Globe, BookOpen, Settings, User } from "lucide-react";
 import SearchBox from "@/components/SearchBox";
 import ChatMessage from "@/components/ChatMessage";
 import ChatHistory from "@/components/ChatHistory";
+import MobileHeader from "@/components/MobileHeader";
+import MobileNavOverlay from "@/components/MobileNavOverlay";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 interface Message {
@@ -16,6 +18,7 @@ const Index = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isChatHistoryOpen, setIsChatHistoryOpen] = useState(false);
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [activeItem, setActiveItem] = useState("Home");
   const [activeBottomItem, setActiveBottomItem] = useState("");
   const menuItems = [{
@@ -117,10 +120,26 @@ Feel free to ask follow-up questions!`,
     }, 2000);
   };
   return <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+      {/* Mobile Header */}
+      <MobileHeader onMenuToggle={() => setIsMobileNavOpen(true)} />
+      
+      {/* Mobile Navigation Overlay */}
+      <MobileNavOverlay
+        isOpen={isMobileNavOpen}
+        onClose={() => setIsMobileNavOpen(false)}
+        activeItem={activeItem}
+        onItemClick={(itemId) => {
+          setActiveItem(itemId);
+          if (itemId === "New Thread") {
+            setIsChatHistoryOpen(true);
+          }
+        }}
+      />
+
       {/* Main background div */}
       <div className="h-screen bg-neutral-800 relative">
-        {/* Sidebar - positioned within main div */}
-        <div className="fixed left-0 top-0 h-full w-20 bg-neutral-900 flex flex-col z-10">
+        {/* Desktop Sidebar - hidden on mobile */}
+        <div className="hidden md:flex fixed left-0 top-0 h-full w-20 bg-neutral-900 flex-col z-10">
           {/* Logo */}
           <div className="h-20 flex items-center justify-center">
             <img src="/lovable-uploads/55babc2c-ec94-466f-bfa8-7eb9a1fb3ed6.png" alt="AI Math Tutor Logo" className="h-12 w-12 object-contain" />
@@ -151,13 +170,13 @@ Feel free to ask follow-up questions!`,
           <ChatHistory isOpen={isChatHistoryOpen} onClose={() => setIsChatHistoryOpen(false)} />
         </div>
 
-        {/* Chat section - elevated over main div */}
-        <div className="ml-20 h-full p-2 pr-2 pt-2 pb-2 bg-neutral-900">
-          <div className="h-full bg-card rounded-2xl shadow-2xl flex flex-col relative">
+        {/* Chat section - responsive margins and padding */}
+        <div className="ml-0 md:ml-20 h-full p-0 md:p-2 pt-16 md:pt-2 bg-neutral-900">
+          <div className="h-full bg-card md:rounded-2xl md:shadow-2xl flex flex-col relative">
             {messages.length === 0 ? (/* Welcome/Search State */
-          <div className="flex-1 flex flex-col items-center justify-center relative">
-                {/* Sign in buttons at top */}
-                <div className="absolute top-6 right-6 flex items-center gap-2">
+          <div className="flex-1 flex flex-col items-center justify-center relative px-4">
+                {/* Desktop Sign in buttons - hidden on mobile */}
+                <div className="hidden md:flex absolute top-6 right-6 items-center gap-2">
                   <Button variant="ghost" size="sm" className="text-sm text-muted-foreground">
                     Sign in or create an account
                   </Button>
@@ -166,19 +185,29 @@ Feel free to ask follow-up questions!`,
                   </Button>
                 </div>
 
-                {/* Logo image above input */}
-                <div className="mb-2 flex justify-center">
+                {/* Mobile welcome text */}
+                <div className="text-center mb-8 md:hidden">
+                  <h1 className="text-2xl font-semibold text-foreground mb-2">
+                    Ask any math related question...
+                  </h1>
+                  <p className="text-muted-foreground">
+                    Get step-by-step solutions and explanations
+                  </p>
+                </div>
+
+                {/* Logo image above input - hidden on mobile */}
+                <div className="hidden md:flex mb-2 justify-center">
                   <img src="/lovable-uploads/73b9e6a2-78c4-4dba-b0c9-1f6148c296be.png" alt="AI Math Tutor Logo" className="h-24 w-auto object-contain" />
                 </div>
                 
-                {/* Input positioned in center */}
-                <div className="w-full max-w-2xl px-8">
+                {/* Input positioned in center on desktop, bottom on mobile */}
+                <div className="w-full max-w-2xl px-4 md:px-8 fixed md:relative bottom-4 md:bottom-auto left-0 md:left-auto right-0 md:right-auto">
                   <SearchBox onSearch={handleSearch} />
                 </div>
               </div>) : (/* Chat State */
           <div className="h-full flex flex-col">
-                {/* Sign in buttons at top */}
-                <div className="absolute top-6 right-6 flex items-center gap-2 z-10">
+                {/* Desktop Sign in buttons - hidden on mobile */}
+                <div className="hidden md:flex absolute top-6 right-6 items-center gap-2 z-10">
                   <Button variant="ghost" size="sm" className="text-sm text-muted-foreground">
                     Sign in or create an account
                   </Button>
@@ -188,8 +217,8 @@ Feel free to ask follow-up questions!`,
                 </div>
 
                 {/* Messages - scrollable within chat section */}
-                <div className="flex-1 overflow-y-auto pt-16 pb-4">
-                  <div className="max-w-3xl mx-auto px-6 space-y-6">
+                <div className="flex-1 overflow-y-auto pt-4 md:pt-16 pb-20 md:pb-4">
+                  <div className="max-w-3xl mx-auto px-4 md:px-6 space-y-6">
                     {messages.map(message => <ChatMessage key={message.id} message={message.content} isUser={message.isUser} timestamp={message.timestamp} />)}
                     
                     {isLoading && <div className="flex gap-4 justify-start">
@@ -209,13 +238,13 @@ Feel free to ask follow-up questions!`,
                   </div>
                 </div>
                 
-                {/* Logo image above input tab */}
-                <div className="flex justify-center mb-1">
+                {/* Logo image above input tab - hidden on mobile */}
+                <div className="hidden md:flex justify-center mb-1">
                   <img src="/lovable-uploads/73b9e6a2-78c4-4dba-b0c9-1f6148c296be.png" alt="AI Math Tutor Logo" className="h-8 w-auto object-contain opacity-60" />
                 </div>
                 
-                {/* Search box at bottom - matches chat width */}
-                <div className="px-6 pb-6">
+                {/* Search box - fixed at bottom on mobile, bottom of chat on desktop */}
+                <div className="fixed md:relative bottom-0 md:bottom-auto left-0 md:left-auto right-0 md:right-auto px-4 md:px-6 pb-4 md:pb-6 bg-card md:bg-transparent">
                   <div className="max-w-3xl mx-auto">
                     <SearchBox onSearch={handleSearch} />
                   </div>
