@@ -169,15 +169,22 @@ Feel free to ask follow-up questions!`,
 
         {/* Chat section - responsive margins and padding */}
         <div className="ml-0 md:ml-20 h-full p-0 md:p-2 bg-neutral-900">
-          {/* Floating hamburger menu for mobile */}
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setIsMobileNavOpen(true)}
-            className="block md:hidden fixed top-4 left-4 z-30 h-10 w-10 bg-background/80 backdrop-blur-sm"
-          >
-            <Menu className="h-6 w-6" />
-          </Button>
+          {/* Floating hamburger menu and image for mobile */}
+          <div className="block md:hidden fixed top-4 left-4 z-30 flex items-center gap-3">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsMobileNavOpen(true)}
+              className="h-10 w-10 bg-background/80 backdrop-blur-sm"
+            >
+              <Menu className="h-6 w-6" />
+            </Button>
+            <img 
+              src="/lovable-uploads/d4b7349a-6316-4264-bba5-7ff581e1a93b.png" 
+              alt="Header Image" 
+              className="h-8 w-auto object-contain"
+            />
+          </div>
           
           <div className="h-full bg-card md:rounded-2xl md:shadow-2xl flex flex-col relative">
             {messages.length === 0 ? (/* Welcome/Search State */
