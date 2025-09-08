@@ -15,7 +15,48 @@ interface Message {
   timestamp: string;
 }
 const Index = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: "example-1",
+      content: "n(n + 2) = 143, solve for n",
+      isUser: true,
+      timestamp: "12:00 PM"
+    },
+    {
+      id: "example-2", 
+      content: `**Problem:** n(n + 2) = 143
+
+**Step 1: Expand the equation**
+n(n + 2) = 143
+n² + 2n = 143
+
+**Step 2: Rearrange to standard form**
+n² + 2n - 143 = 0
+
+**Step 3: Use the quadratic formula**
+For ax² + bx + c = 0, where a = 1, b = 2, c = -143
+
+$$n = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$
+
+$$n = \\frac{-2 \\pm \\sqrt{4 + 572}}{2}$$
+
+$$n = \\frac{-2 \\pm \\sqrt{576}}{2}$$
+
+$$n = \\frac{-2 \\pm 24}{2}$$
+
+**Step 4: Calculate both solutions**
+- n = (−2 + 24)/2 = 22/2 = 11
+- n = (−2 − 24)/2 = −26/2 = −13
+
+**Step 5: Verification**
+For n = 11: 11(11 + 2) = 11 × 13 = 143 ✓
+For n = −13: −13(−13 + 2) = −13 × (−11) = 143 ✓
+
+**Final Answer:** n = 11 or n = −13`,
+      isUser: false,
+      timestamp: "12:00 PM"
+    }
+  ]);
   const [isLoading, setIsLoading] = useState(false);
   const [isChatHistoryOpen, setIsChatHistoryOpen] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
