@@ -1,4 +1,3 @@
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Copy, ThumbsUp, ThumbsDown, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -29,15 +28,11 @@ const ChatMessage = ({ message, isUser, timestamp }: ChatMessageProps) => {
       )}
       
       <div className={cn("flex flex-col gap-3", isUser ? "items-end" : "items-start")}>
-        <div className={cn(
-          "max-w-[85%] p-4 rounded-2xl",
-          isUser 
-            ? "bg-primary text-primary-foreground ml-12" 
-            : "bg-card shadow-clean"
-        )}>
-          <div className="prose prose-sm max-w-none dark:prose-invert">
-            <p className="whitespace-pre-wrap leading-relaxed text-sm">{message}</p>
-          </div>
+        <div className={cn("max-w-[85%]", isUser ? "ml-12" : "")}>
+          <p className={cn(
+            "whitespace-pre-wrap leading-relaxed text-sm",
+            isUser ? "text-primary" : "text-foreground"
+          )}>{message}</p>
         </div>
         
         {!isUser && (
