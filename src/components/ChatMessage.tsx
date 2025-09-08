@@ -15,7 +15,7 @@ const ChatMessage = ({ message, isUser, timestamp }: ChatMessageProps) => {
   };
 
   return (
-    <div className={cn("flex gap-4 group", isUser ? "justify-end" : "justify-start")}>
+    <div className={cn("flex gap-4 group", isUser ? "justify-end" : "justify-center")}>
       {!isUser && (
         <div className="flex-shrink-0">
           <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
@@ -28,8 +28,8 @@ const ChatMessage = ({ message, isUser, timestamp }: ChatMessageProps) => {
         </div>
       )}
       
-      <div className={cn("flex flex-col gap-3", isUser ? "items-end" : "items-start")}>
-        <div className={cn("max-w-[85%]", isUser ? "ml-12" : "")}>
+      <div className={cn("flex flex-col gap-3", isUser ? "items-end" : "items-center")}>
+        <div className={cn(isUser ? "max-w-[85%] ml-12" : "w-full")}>
           {isUser ? (
             <p className="whitespace-pre-wrap leading-relaxed text-sm text-primary font-medium">
               {message}
