@@ -76,7 +76,7 @@ const ChatInput = ({ onSendMessage, isLoading = false }: ChatInputProps) => {
                         <Plus className="h-4 w-4" />
                       </Button>
                     </PopoverTrigger>
-                    <PopoverContent className="w-auto p-2 z-50" align="end">
+                    <PopoverContent className="w-auto p-2 z-50 bg-background border shadow-md" align="end">
                       <div className="flex gap-1">
                         <Button
                           type="button"
