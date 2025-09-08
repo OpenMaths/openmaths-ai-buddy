@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Copy, ThumbsUp, ThumbsDown, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
+import LaTeXRenderer from "./LaTeXRenderer";
 
 interface ChatMessageProps {
   message: string;
@@ -29,10 +30,15 @@ const ChatMessage = ({ message, isUser, timestamp }: ChatMessageProps) => {
       
       <div className={cn("flex flex-col gap-3", isUser ? "items-end" : "items-start")}>
         <div className={cn("max-w-[85%]", isUser ? "ml-12" : "")}>
-          <p className={cn(
-            "whitespace-pre-wrap leading-relaxed text-sm",
-            isUser ? "text-primary" : "text-foreground"
-          )}>{message}</p>
+          {isUser ? (
+            <p className="whitespace-pre-wrap leading-relaxed text-sm text-primary font-medium">
+              {message}
+            </p>
+          ) : (
+            <div className="text-foreground">
+              <LaTeXRenderer content={message} />
+            </div>
+          )}
         </div>
         
         {!isUser && (
