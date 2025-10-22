@@ -2,6 +2,7 @@ import { Home, Plus, Globe, BookOpen, Settings, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ChatHistory from "./ChatHistory";
 
 interface SidebarProps {
@@ -9,6 +10,7 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ className }: SidebarProps) => {
+  const navigate = useNavigate();
   const [isChatHistoryOpen, setIsChatHistoryOpen] = useState(false);
   const [activeItem, setActiveItem] = useState("Home");
   const [activeBottomItem, setActiveBottomItem] = useState("");
@@ -61,13 +63,17 @@ const Sidebar = ({ className }: SidebarProps) => {
   return (
     <div className={cn("w-16 flex flex-col", className)} style={{ backgroundColor: '#1E1E1E' }}>
       {/* Logo */}
-      <div className="h-16 flex items-center justify-center">
+      <button 
+        onClick={() => navigate("/about")}
+        className="h-16 flex items-center justify-center hover:bg-secondary/50 transition-colors cursor-pointer"
+        title="About OpenMath"
+      >
         <img 
           src="/lovable-uploads/55babc2c-ec94-466f-bfa8-7eb9a1fb3ed6.png" 
           alt="AI Math Tutor Logo" 
           className="h-8 w-8 object-contain"
         />
-      </div>
+      </button>
 
       {/* Navigation */}
       <nav className="flex-1 py-4">
