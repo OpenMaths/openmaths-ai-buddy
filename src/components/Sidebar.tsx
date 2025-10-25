@@ -65,13 +65,14 @@ const Sidebar = ({ className }: SidebarProps) => {
       {/* Logo */}
       <button 
         onClick={() => navigate("/about")}
-        className="h-16 flex items-center justify-center hover:opacity-80 transition-opacity"
+        className="h-16 flex items-center justify-center hover:opacity-80 hover:bg-secondary/50 transition-all cursor-pointer relative z-10"
         title="About OpenMath"
+        type="button"
       >
         <img 
           src="/lovable-uploads/55babc2c-ec94-466f-bfa8-7eb9a1fb3ed6.png" 
           alt="AI Math Tutor Logo" 
-          className="h-8 w-8 object-contain"
+          className="h-8 w-8 object-contain pointer-events-none"
         />
       </button>
 
