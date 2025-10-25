@@ -1,12 +1,22 @@
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import bannerImage from "@/assets/about-banner.jpg";
 
 const About = () => {
   const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Banner Image */}
+      <div className="w-full h-64 md:h-80 lg:h-96 overflow-hidden">
+        <img 
+          src={bannerImage} 
+          alt="OpenMath Banner" 
+          className="w-full h-full object-cover"
+        />
+      </div>
+
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <Button
           variant="ghost"
