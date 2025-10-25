@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ThemeProvider } from "next-themes";
 import { Home, Plus, Globe, BookOpen, Settings, User, Menu } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import SearchBox from "@/components/SearchBox";
 import ChatMessage from "@/components/ChatMessage";
 import ChatHistory from "@/components/ChatHistory";
@@ -15,6 +16,7 @@ interface Message {
   timestamp: string;
 }
 const Index = () => {
+  const navigate = useNavigate();
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isChatHistoryOpen, setIsChatHistoryOpen] = useState(false);
@@ -138,9 +140,15 @@ Feel free to ask follow-up questions!`,
         {/* Desktop Sidebar - hidden on mobile */}
         <div className="hidden md:flex fixed left-0 top-0 h-full w-20 bg-neutral-900 flex-col z-10">
           {/* Logo */}
-          <div className="h-20 flex items-center justify-center">
-            <img src="/lovable-uploads/55babc2c-ec94-466f-bfa8-7eb9a1fb3ed6.png" alt="AI Math Tutor Logo" className="h-12 w-12 object-contain" />
-          </div>
+          <button
+            type="button"
+            onClick={() => navigate("/about")}
+            className="h-20 w-full flex items-center justify-center hover:bg-secondary/50 transition-colors cursor-pointer"
+            title="About OpenMath"
+            aria-label="OpenMath About"
+          >
+            <img src="/lovable-uploads/55babc2c-ec94-466f-bfa8-7eb9a1fb3ed6.png" alt="OpenMath logo" className="h-12 w-12 object-contain pointer-events-none" />
+          </button>
 
           {/* Navigation */}
           <nav className="flex-1 py-4">
